@@ -1,0 +1,32 @@
+extend layout
+
+block content
+  p
+   h2
+      a(href="/") HOME
+  h1 Your books 
+  p Here is a list of your books.
+  table.table.table-hover.table-bordered
+    thead
+      tr
+        th ID
+        th Title
+        th Author
+        th ISBN-10
+        th Price
+    tbody
+      if !books.length
+        tr
+          td(colspan=5) You should add a book
+      else
+        each book in books
+          tr
+            td #{book.id}
+            td
+              a(href="/books/#{book.id}") #{book.title}
+            td #{book.author}
+            td #{book.isbn}
+            td
+              a(href="/books/#{book.price}") #{book.price}
+            td
+              a(href="/api/books/#{book.id}" target="_blank") JSON data
